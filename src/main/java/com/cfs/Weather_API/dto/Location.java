@@ -1,13 +1,20 @@
 package com.cfs.Weather_API.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Location {
     private String name;
     private String region;
     private String country;
     private double lat;
     private double lon;
+
+    @JsonProperty("tz_id")
     private String tzId;
+    
+    @JsonProperty("localtime_epoch")
     private int localtimeEpoch;
+
     private String localtime;
 
     public Location(String name, String region, String country, double lat, double lon, String tzId, int localtimeEpoch, String localtime) {

@@ -1,45 +1,116 @@
 package com.cfs.Weather_API.dto;
 
-public class Current {
-    private int lastUpdatedEpoch;
-    private String lastUpdated;
-    private int tempC;
-    private double tempF;
-    private int isDay;
-    private Condition condition;
-    private double windMph;
-    private int windKph;
-    private int windDegree;
-    private String windDir;
-    private int pressureMb;
-    private double pressureIn;
-    private double precipMm;
-    private int precipIn;
-    private int humidity;
-    private int cloud;
-    private double feelslikeC;
-    private double feelslikeF;
-    private double windchillC;
-    private double windchillF;
-    private double heatindexC;
-    private double heatindexF;
-    private double dewpointC;
-    private double dewpointF;
-    private int visKm;
-    private int visMiles;
-    private double uv;
-    private double gustMph;
-    private double gustKph;
-    private int willItRain;
-    private int chanceOfRain;
-    private int willItSnow;
-    private int chanceOfSnow;
-    private double shortRad;
-    private double diffRad;
-    private int dni;
-    private double gti;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    public Current(int lastUpdatedEpoch, String lastUpdated, int tempC, double tempF, int isDay, Condition condition, double windMph, int windKph, int windDegree, String windDir, int pressureMb, double pressureIn, double precipMm, int precipIn, int humidity, int cloud, double feelslikeC, double feelslikeF, double windchillC, double windchillF, double heatindexC, double heatindexF, double dewpointC, double dewpointF, int visKm, int visMiles, double uv, double gustMph, double gustKph, int willItRain, int chanceOfRain, int willItSnow, int chanceOfSnow, double shortRad, double diffRad, int dni, double gti) {
+public class Current {
+    
+    @JsonProperty("last_updated_epoch")
+    private int lastUpdatedEpoch;
+
+    @JsonProperty("last_updated")
+    private String lastUpdated;
+    
+    @JsonProperty("temp_c")
+    private double tempC; // Changed to double to handle decimal temperatures (e.g., 24.1)
+
+    @JsonProperty("temp_f")
+    private double tempF;
+    
+    @JsonProperty("is_day")
+    private int isDay;
+    
+    private Condition condition; // No annotation needed (matches JSON)
+    
+    @JsonProperty("wind_mph")
+    private double windMph;
+    
+    @JsonProperty("wind_kph")
+    private double windKph; // Changed to double, wind_kph often comes back as a decimal
+    
+    @JsonProperty("wind_degree")
+    private int windDegree;
+    
+    @JsonProperty("wind_dir")
+    private String windDir;
+    
+    @JsonProperty("pressure_mb")
+    private int pressureMb;
+    
+    @JsonProperty("pressure_in")
+    private double pressureIn;
+    
+    @JsonProperty("precip_mm")
+    private double precipMm;
+    
+    @JsonProperty("precip_in")
+    private double precipIn; // Changed to double just in case precip comes back as decimal
+    
+    private int humidity; // No annotation needed
+    
+    private int cloud; // No annotation needed
+    
+    @JsonProperty("feelslike_c")
+    private double feelslikeC;
+    
+    @JsonProperty("feelslike_f")
+    private double feelslikeF;
+    
+    @JsonProperty("windchill_c")
+    private double windchillC;
+    
+    @JsonProperty("windchill_f")
+    private double windchillF;
+    
+    @JsonProperty("heatindex_c")
+    private double heatindexC;
+    
+    @JsonProperty("heatindex_f")
+    private double heatindexF;
+    
+    @JsonProperty("dewpoint_c")
+    private double dewpointC;
+    
+    @JsonProperty("dewpoint_f")
+    private double dewpointF;
+    
+    @JsonProperty("vis_km")
+    private int visKm; // Consider double if visibility returns decimals
+    
+    @JsonProperty("vis_miles")
+    private int visMiles; 
+    
+    private double uv; // No annotation needed
+    
+    @JsonProperty("gust_mph")
+    private double gustMph;
+    
+    @JsonProperty("gust_kph")
+    private double gustKph;
+    
+    @JsonProperty("will_it_rain")
+    private int willItRain;
+    
+    @JsonProperty("chance_of_rain")
+    private int chanceOfRain;
+    
+    @JsonProperty("will_it_snow")
+    private int willItSnow;
+    
+    @JsonProperty("chance_of_snow")
+    private int chanceOfSnow;
+    
+    @JsonProperty("short_rad")
+    private double shortRad;
+    
+    @JsonProperty("diff_rad")
+    private double diffRad;
+    
+    private int dni; // No annotation needed
+    
+    private double gti; // No annotation needed
+
+    // --- Constructor ---
+    public Current(int lastUpdatedEpoch, String lastUpdated, double tempC, double tempF, int isDay, Condition condition, double windMph, double windKph, int windDegree, String windDir, int pressureMb, double pressureIn, double precipMm, double precipIn, int humidity, int cloud, double feelslikeC, double feelslikeF, double windchillC, double windchillF, double heatindexC, double heatindexF, double dewpointC, double dewpointF, int visKm, int visMiles, double uv, double gustMph, double gustKph, int willItRain, int chanceOfRain, int willItSnow, int chanceOfSnow, double shortRad, double diffRad, int dni, double gti) {
         this.lastUpdatedEpoch = lastUpdatedEpoch;
         this.lastUpdated = lastUpdated;
         this.tempC = tempC;
@@ -79,9 +150,11 @@ public class Current {
         this.gti = gti;
     }
 
+    // --- Empty Constructor ---
     public Current() {
     }
 
+    // --- Getters and Setters ---
     public int getLastUpdatedEpoch() {
         return lastUpdatedEpoch;
     }
@@ -98,11 +171,11 @@ public class Current {
         this.lastUpdated = lastUpdated;
     }
 
-    public int getTempC() {
+    public double getTempC() {
         return tempC;
     }
 
-    public void setTempC(int tempC) {
+    public void setTempC(double tempC) {
         this.tempC = tempC;
     }
 
@@ -138,11 +211,11 @@ public class Current {
         this.windMph = windMph;
     }
 
-    public int getWindKph() {
+    public double getWindKph() {
         return windKph;
     }
 
-    public void setWindKph(int windKph) {
+    public void setWindKph(double windKph) {
         this.windKph = windKph;
     }
 
@@ -186,11 +259,11 @@ public class Current {
         this.precipMm = precipMm;
     }
 
-    public int getPrecipIn() {
+    public double getPrecipIn() {
         return precipIn;
     }
 
-    public void setPrecipIn(int precipIn) {
+    public void setPrecipIn(double precipIn) {
         this.precipIn = precipIn;
     }
 
@@ -377,6 +450,4 @@ public class Current {
     public void setGti(double gti) {
         this.gti = gti;
     }
-
-
 }
