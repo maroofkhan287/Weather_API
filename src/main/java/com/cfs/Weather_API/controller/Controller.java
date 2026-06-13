@@ -1,9 +1,9 @@
 package com.cfs.Weather_API.controller;
 
 import com.cfs.Weather_API.dto.RootClass;
-import com.cfs.Weather_API.dto.WeatherResponse;
+// import com.cfs.Weather_API.dto.WeatherResponse;
 import com.cfs.Weather_API.service.WeatherService;
-import org.apache.tomcat.util.http.WebdavIfHeader;
+// import org.apache.tomcat.util.http.WebdavIfHeader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
