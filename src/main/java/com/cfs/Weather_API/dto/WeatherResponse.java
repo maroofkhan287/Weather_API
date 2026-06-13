@@ -1,17 +1,38 @@
 package com.cfs.Weather_API.dto;
 
 public class WeatherResponse {
-
+    private String city;
+    private String region;
+    private String country;
+    private String temparature;
     private String condition;
 
-    private String temparature;
 
-    private String city;
+    public WeatherResponse() {
+    }
 
-    public WeatherResponse(String condition, String temparature, String city) {
+    public WeatherResponse(String condition, String country, String region, String temparature, String city) {
         this.condition = condition;
         this.temparature = temparature;
         this.city = city;
+        this.country=country;
+        this.region=region;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCondition() {
